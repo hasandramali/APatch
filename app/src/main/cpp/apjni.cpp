@@ -15,7 +15,7 @@
 
 extern "C" {
     JNIEXPORT jboolean JNICALL
-    Java_me_bmax_apatch_Natives_nativeReady(JNIEnv *env, jobject /* this */, jstring superKey)
+    Java_com_valvesoftware_aq_Natives_nativeReady(JNIEnv *env, jobject /* this */, jstring superKey)
     {
         if (!superKey) [[unlikely]] {
             LOGE("Super Key is null!");
@@ -28,7 +28,7 @@ extern "C" {
         return rc;
     }
 
-    JNIEXPORT jlong JNICALL Java_me_bmax_apatch_Natives_nativeKernelPatchVersion(JNIEnv *env, jobject /* this */,
+    JNIEXPORT jlong JNICALL Java_com_valvesoftware_aq_Natives_nativeKernelPatchVersion(JNIEnv *env, jobject /* this */,
                                                                                 jstring superKey)
     {
         if (!superKey) [[unlikely]] {
@@ -41,7 +41,7 @@ extern "C" {
         return version;
     }
     
-    JNIEXPORT jstring JNICALL Java_me_bmax_apatch_Natives_nativeKernelPatchBuildTime(JNIEnv *env, jobject /* this */,
+    JNIEXPORT jstring JNICALL Java_com_valvesoftware_aq_Natives_nativeKernelPatchBuildTime(JNIEnv *env, jobject /* this */,
         jstring superKey)
     {
         if (!superKey) [[unlikely]] {
@@ -57,7 +57,7 @@ extern "C" {
         return env->NewStringUTF(buf);
     }
 
-    JNIEXPORT jint JNICALL Java_me_bmax_apatch_Natives_nativeSu(JNIEnv *env, jobject /* this */, jstring superKey,
+    JNIEXPORT jint JNICALL Java_com_valvesoftware_aq_Natives_nativeSu(JNIEnv *env, jobject /* this */, jstring superKey,
                                                                  jint to_uid, jstring scontext)
     {
         if (!superKey) [[unlikely]] {
@@ -80,7 +80,7 @@ extern "C" {
         return rc;
     }
 
-    JNIEXPORT jlong JNICALL Java_me_bmax_apatch_Natives_nativeThreadSu(JNIEnv *env, jobject /* this */, jstring superKey,
+    JNIEXPORT jlong JNICALL Java_com_valvesoftware_aq_Natives_nativeThreadSu(JNIEnv *env, jobject /* this */, jstring superKey,
                                                                        jint tid, jstring scontext)
     {
         if (!superKey) [[unlikely]] {
@@ -100,7 +100,7 @@ extern "C" {
         return rc;
     }
 
-    JNIEXPORT jint JNICALL Java_me_bmax_apatch_Natives_nativeSuNums(JNIEnv *env, jobject /* this */, jstring superKey)
+    JNIEXPORT jint JNICALL Java_com_valvesoftware_aq_Natives_nativeSuNums(JNIEnv *env, jobject /* this */, jstring superKey)
     {
         if (!superKey) [[unlikely]] {
             LOGE("Super Key is null!");
@@ -112,7 +112,7 @@ extern "C" {
         return rc;
     }
 
-    JNIEXPORT jint JNICALL Java_me_bmax_apatch_Natives_nativeSetUidExclude(JNIEnv *env, jobject /* this */, jstring superKey, jint uid, jint exclude)
+    JNIEXPORT jint JNICALL Java_com_valvesoftware_aq_Natives_nativeSetUidExclude(JNIEnv *env, jobject /* this */, jstring superKey, jint uid, jint exclude)
     {
         if (!superKey) [[unlikely]] {
             LOGE("Super Key is null!");
@@ -124,7 +124,7 @@ extern "C" {
         return rc;
     }
 
-    JNIEXPORT jint JNICALL Java_me_bmax_apatch_Natives_nativeGetUidExclude(JNIEnv *env, jobject /* this */, jstring superKey, uid_t uid)
+    JNIEXPORT jint JNICALL Java_com_valvesoftware_aq_Natives_nativeGetUidExclude(JNIEnv *env, jobject /* this */, jstring superKey, uid_t uid)
     {
         if (!superKey) [[unlikely]] {
             LOGE("Super Key is null!");
@@ -136,7 +136,7 @@ extern "C" {
         return rc;
     }
 
-    JNIEXPORT jintArray JNICALL Java_me_bmax_apatch_Natives_nativeSuUids(JNIEnv *env, jobject /* this */,
+    JNIEXPORT jintArray JNICALL Java_com_valvesoftware_aq_Natives_nativeSuUids(JNIEnv *env, jobject /* this */,
                                                                          jstring superKey)
     {
         if (!superKey) [[unlikely]] {
@@ -159,7 +159,7 @@ extern "C" {
         return env->NewIntArray(0);
     }
 
-    JNIEXPORT jobject JNICALL Java_me_bmax_apatch_Natives_nativeSuProfile(JNIEnv *env, jobject /* this */,
+    JNIEXPORT jobject JNICALL Java_com_valvesoftware_aq_Natives_nativeSuProfile(JNIEnv *env, jobject /* this */,
                                                                           jstring superKey, jint uid)
     {
         if (!superKey) [[unlikely]] {
@@ -174,7 +174,7 @@ extern "C" {
             env->ReleaseStringUTFChars(superKey, skey);
             return nullptr;
         }
-        jclass cls = env->FindClass("me/bmax/apatch/Natives$Profile");
+        jclass cls = env->FindClass("com/valvesoftware/aq/Natives$Profile");
         jmethodID constructor = env->GetMethodID(cls, "<init>", "()V");
         jfieldID uidField = env->GetFieldID(cls, "uid", "I");
         jfieldID toUidField = env->GetFieldID(cls, "toUid", "I");
@@ -188,7 +188,7 @@ extern "C" {
         return obj;
     }
 
-    JNIEXPORT jlong JNICALL Java_me_bmax_apatch_Natives_nativeLoadKernelPatchModule(JNIEnv *env, jobject /* this */,
+    JNIEXPORT jlong JNICALL Java_com_valvesoftware_aq_Natives_nativeLoadKernelPatchModule(JNIEnv *env, jobject /* this */,
                                                                                     jstring superKey,
                                                                                     jstring modulePath,
                                                                                     jstring jargs)
@@ -210,7 +210,7 @@ extern "C" {
         return rc;
     }
 
-    JNIEXPORT jobject JNICALL Java_me_bmax_apatch_Natives_nativeControlKernelPatchModule(JNIEnv *env, jobject /* this */,
+    JNIEXPORT jobject JNICALL Java_com_valvesoftware_aq_Natives_nativeControlKernelPatchModule(JNIEnv *env, jobject /* this */,
                                                                                          jstring superKey,
                                                                                          jstring modName,
                                                                                          jstring jctlargs)
@@ -229,7 +229,7 @@ extern "C" {
             LOGE("nativeControlKernelPatchModule error: %ld", rc);
         }
 
-        jclass cls = env->FindClass("me/bmax/apatch/Natives$KPMCtlRes");
+        jclass cls = env->FindClass("com/valvesoftware/aq/Natives$KPMCtlRes");
         jmethodID constructor = env->GetMethodID(cls, "<init>", "()V");
         jfieldID rcField = env->GetFieldID(cls, "rc", "J");
         jfieldID outMsg = env->GetFieldID(cls, "outMsg", "Ljava/lang/String;");
@@ -244,7 +244,7 @@ extern "C" {
         return obj;
     }
 
-    JNIEXPORT jlong JNICALL Java_me_bmax_apatch_Natives_nativeUnloadKernelPatchModule(JNIEnv *env, jobject /* this */,
+    JNIEXPORT jlong JNICALL Java_com_valvesoftware_aq_Natives_nativeUnloadKernelPatchModule(JNIEnv *env, jobject /* this */,
                                                                                       jstring superKey,
                                                                                       jstring modName)
     {
@@ -264,7 +264,7 @@ extern "C" {
         return rc;
     }
 
-    JNIEXPORT jlong JNICALL Java_me_bmax_apatch_Natives_nativeKernelPatchModuleNum(JNIEnv *env, jobject /* this */,
+    JNIEXPORT jlong JNICALL Java_com_valvesoftware_aq_Natives_nativeKernelPatchModuleNum(JNIEnv *env, jobject /* this */,
                                                                                    jstring superKey)
     {
         if (!superKey) [[unlikely]] {
@@ -281,7 +281,7 @@ extern "C" {
         return rc;
     }
 
-    JNIEXPORT jstring JNICALL Java_me_bmax_apatch_Natives_nativeKernelPatchModuleList(JNIEnv *env, jobject /* this */,
+    JNIEXPORT jstring JNICALL Java_com_valvesoftware_aq_Natives_nativeKernelPatchModuleList(JNIEnv *env, jobject /* this */,
                                                                                       jstring superKey)
     {
         if (!superKey) [[unlikely]] {
@@ -299,7 +299,7 @@ extern "C" {
         return env->NewStringUTF(buf);
     }
 
-    JNIEXPORT jstring JNICALL Java_me_bmax_apatch_Natives_nativeKernelPatchModuleInfo(JNIEnv *env, jobject /* this */,
+    JNIEXPORT jstring JNICALL Java_com_valvesoftware_aq_Natives_nativeKernelPatchModuleInfo(JNIEnv *env, jobject /* this */,
                                                                                       jstring superKey,
                                                                                       jstring modName)
     {
@@ -319,7 +319,7 @@ extern "C" {
         return env->NewStringUTF(buf);
     }
 
-    JNIEXPORT jlong JNICALL Java_me_bmax_apatch_Natives_nativeGrantSu(JNIEnv *env, jobject /* this */, jstring superKey,
+    JNIEXPORT jlong JNICALL Java_com_valvesoftware_aq_Natives_nativeGrantSu(JNIEnv *env, jobject /* this */, jstring superKey,
                                                                       jint uid, jint to_uid, jstring scontext)
     {
         if (!superKey) [[unlikely]] {
@@ -338,7 +338,7 @@ extern "C" {
         return rc;
     }
 
-    JNIEXPORT jlong JNICALL Java_me_bmax_apatch_Natives_nativeRevokeSu(JNIEnv *env, jobject /* this */, jstring superKey,
+    JNIEXPORT jlong JNICALL Java_com_valvesoftware_aq_Natives_nativeRevokeSu(JNIEnv *env, jobject /* this */, jstring superKey,
                                                                        jint uid)
     {
         if (!superKey) [[unlikely]] {
@@ -351,7 +351,7 @@ extern "C" {
         return rc;
     }
 
-    JNIEXPORT jstring JNICALL Java_me_bmax_apatch_Natives_nativeSuPath(JNIEnv *env, jobject /* this */, jstring superKey)
+    JNIEXPORT jstring JNICALL Java_com_valvesoftware_aq_Natives_nativeSuPath(JNIEnv *env, jobject /* this */, jstring superKey)
     {
         if (!superKey) [[unlikely]] {
             LOGE("Super Key is null!");
@@ -367,7 +367,7 @@ extern "C" {
         return env->NewStringUTF(buf);
     }
 
-    JNIEXPORT jboolean JNICALL Java_me_bmax_apatch_Natives_nativeResetSuPath(JNIEnv *env, jobject /* this */,
+    JNIEXPORT jboolean JNICALL Java_com_valvesoftware_aq_Natives_nativeResetSuPath(JNIEnv *env, jobject /* this */,
                                                                              jstring superKey, jstring jpath)
     {
         if (!superKey) [[unlikely]] {
@@ -382,7 +382,7 @@ extern "C" {
         return rc == 0;
     }
 
-JNIEXPORT jboolean JNICALL Java_me_bmax_apatch_Natives_nativeGetSafeMode(JNIEnv *env, jobject /* this */,
+JNIEXPORT jboolean JNICALL Java_com_valvesoftware_aq_Natives_nativeGetSafeMode(JNIEnv *env, jobject /* this */,
                                                                          jstring superKey)
     {
         if (!superKey) [[unlikely]] {
