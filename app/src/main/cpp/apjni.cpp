@@ -174,7 +174,7 @@ extern "C" {
             env->ReleaseStringUTFChars(superKey, skey);
             return nullptr;
         }
-        jclass cls = env->FindClass("me/bmax/apatch/Natives$Profile");
+        jclass cls = env->FindClass("com/valvesoftware/aq/Natives$Profile");
         jmethodID constructor = env->GetMethodID(cls, "<init>", "()V");
         jfieldID uidField = env->GetFieldID(cls, "uid", "I");
         jfieldID toUidField = env->GetFieldID(cls, "toUid", "I");
@@ -229,7 +229,7 @@ extern "C" {
             LOGE("nativeControlKernelPatchModule error: %ld", rc);
         }
 
-        jclass cls = env->FindClass("me/bmax/apatch/Natives$KPMCtlRes");
+        jclass cls = env->FindClass("com/valvesoftware/aq/Natives$KPMCtlRes");
         jmethodID constructor = env->GetMethodID(cls, "<init>", "()V");
         jfieldID rcField = env->GetFieldID(cls, "rc", "J");
         jfieldID outMsg = env->GetFieldID(cls, "outMsg", "Ljava/lang/String;");
