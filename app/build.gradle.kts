@@ -27,7 +27,7 @@ apksign {
 }
 
 android {
-    namespace = "com.valvesoftware.aq"
+    namespace = "me.bmax.apatch"
 
     buildTypes {
         debug {
